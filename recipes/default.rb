@@ -40,6 +40,7 @@ if node.recipe?("mongodb::default") or node.recipe?("mongodb")
     mongodb_type "mongod"
     bind_ip      node['mongodb']['bind_ip']
     port         node['mongodb']['port']
+    auth         node['mongodb']['auth']
     logpath      node['mongodb']['logpath']
     dbpath       node['mongodb']['dbpath']
     enable_rest  node['mongodb']['enable_rest']
