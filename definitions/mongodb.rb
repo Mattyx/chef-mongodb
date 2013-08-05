@@ -22,7 +22,7 @@
 define :mongodb_instance, :mongodb_type => "mongod" , :action => [:enable, :start],
     :bind_ip => nil, :port => 27017 , :logpath => "/var/log/mongodb",
     :dbpath => "/data", :configserver => [],
-    :replicaset => nil, :enable_rest => false, :smallfiles => false, :notifies => [] do
+    :replicaset => nil, :enable_rest => false, :smallfiles => false, :notifies => [], :auth => false do
     
   include_recipe "mongodb::default"
   
@@ -45,6 +45,8 @@ define :mongodb_instance, :mongodb_type => "mongod" , :action => [:enable, :star
   replicaset = params[:replicaset]
 
   nojournal = node['mongodb']['nojournal']
+
+  auth = params['mongodb']['auth']
 
   if type == "shard"
     if replicaset.nil?
@@ -98,6 +100,7 @@ define :mongodb_instance, :mongodb_type => "mongod" , :action => [:enable, :star
       "configdb" => configserver,
       "bind_ip" => bind_ip,
       "port" => port,
+      "auth" => auth,
       "logpath" => logfile,
       "dbpath" => dbpath,
       "replicaset_name" => replicaset_name,
