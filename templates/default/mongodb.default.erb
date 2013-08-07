@@ -11,7 +11,7 @@ DAEMON_OPTS="$DAEMON_OPTS --bind_ip <%= @bind_ip %>"
 <% end -%>
 
 <% if @auth %>
-    DAEMON_OPTS="$DAEMON_OPTS --auth"
+DAEMON_OPTS="$DAEMON_OPTS --auth"
 <% end %>
 
 <%= @port ? "DAEMON_OPTS=\"$DAEMON_OPTS --port #{@port}\"" : "" %>
