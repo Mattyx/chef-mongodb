@@ -46,7 +46,7 @@ define :mongodb_instance, :mongodb_type => "mongod" , :action => [:enable, :star
 
   nojournal = node['mongodb']['nojournal']
 
-  auth = params['mongodb']['auth']
+  auth = params[:auth]
 
   if type == "shard"
     if replicaset.nil?
