@@ -19,10 +19,12 @@
 # limitations under the License.
 #
 
-package node[:mongodb][:package_name] do
-  action :install
+p = package node[:mongodb][:package_name] do
+  action node['mongodb']['compiletime'] ? :nothing : :install
   version node[:mongodb][:package_version]
 end
+
+p.run_action(:install) if node['mongodb']['compiletime']
 
 needs_mongo_gem = (node.recipe?("mongodb::replicaset") or node.recipe?("mongodb::mongos"))
 

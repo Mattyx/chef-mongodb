@@ -23,6 +23,8 @@ default[:mongodb][:bind_ip] = nil
 default[:mongodb][:port] = 27017
 default[:mongodb][:configfile] = nil
 default[:mongodb][:auth] = false
+default[:mongodb][:compiletime] = false # Default to false for backward compatibility
+
 
 # cluster identifier
 default[:mongodb][:client_roles] = []
