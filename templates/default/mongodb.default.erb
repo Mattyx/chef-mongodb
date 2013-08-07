@@ -10,9 +10,9 @@ DAEMON_OPTS=""
 DAEMON_OPTS="$DAEMON_OPTS --bind_ip <%= @bind_ip %>"
 <% end -%>
 
-<% if @auth -%>
+<% if @auth %>
     DAEMON_OPTS="$DAEMON_OPTS --auth"
-<% end -%>
+<% end %>
 
 <%= @port ? "DAEMON_OPTS=\"$DAEMON_OPTS --port #{@port}\"" : "" %>
 <%= @dbpath ? "DAEMON_OPTS=\"$DAEMON_OPTS --dbpath #{@dbpath}\"" : "" %>
